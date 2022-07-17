@@ -1,0 +1,140 @@
+html,body{
+    margin: 0;
+}
+.tool-bar{
+    background-color: #4A90E2;
+    height: 76px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    width: 100%;
+}
+html,body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+.back-ground{
+    background-color: #E1E1E1;
+    width: 100%;
+    height: 100%;
+}
+.my-tasks{
+    height: 28px;
+    width: 220px;
+    color: #00408B;
+    text-align: center;
+}
+.in-progress{
+
+    height: 28px;
+    width: 220px;
+    color: #00408B;
+    text-align: center;
+}
+.completed{
+    
+    height: 28px;
+    width: 220px;
+    color: #00408B;
+    text-align: center;
+}
+.input-div{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    width: 100%;
+}
+.todo-input{
+    outline: none;
+    margin-top: 24px;
+    width: 620px;
+    height: 30px;
+    color: #C8C8C8;
+    border: 1px solid #C8C8C8;
+    border-radius: 5px;
+}
+.todo-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+}
+.todo-item-top{
+    margin-top: 24px;
+    width: 620px;
+    height: 70px;
+    background: #F2F2F2;
+    border-radius: 5px 5px 0 0;
+}
+.todo-calendar,.todo-file,.todo-comment{
+    color: #757575;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.todo-tag{
+    margin-left: 50px;
+}
+.todo-edit{
+    
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.todo-check{
+    display: inline-block;
+    background-color: #FFFFFF;
+}
+.todo-check:focus{
+    background-color: #4A90E2;
+    color: #FFFFFF;
+}
+.todo-text{
+    display: inline-block;
+}
+.todo-edit-star{
+    display: inline-block;
+    margin-right: 10px
+}
+.todo-edit-text{
+    display: inline-block;
+}
+.todo-star-container{
+    display: inline-block;
+    float:right;
+    margin-right: 10px;
+}
+.todo-item-bottom{
+    background-color: #F2F2F2;
+}
+.selector{
+    width: 100%;
+}
+.cancel{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+.save{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+.todo-editer{
+    margin-left: 60px;
+}
+
+.comment-input{
+    outline: none;
+    border: none;
+    height: 100px;
+    width:400px;
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #000000;
+    line-height: 24px;
+}
+.date{
+    border: none;
+}
+.time{
+    border: none;
+}
