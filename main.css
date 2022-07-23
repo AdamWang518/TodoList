@@ -23,7 +23,15 @@ html,body {
     height: 28px;
     width: 220px;
     color: #00408B;
+    transition: color 1s;
     text-align: center;
+    cursor: pointer;
+}
+.my-tasks:hover{
+    color: #FFFFFF;
+}
+.my-tasks:active{
+    opacity: 0.7;
 }
 .in-progress{
 
@@ -31,6 +39,14 @@ html,body {
     width: 220px;
     color: #00408B;
     text-align: center;
+    transition: color 1s;
+    cursor: pointer;
+}
+.in-progress:hover{
+    color: #FFFFFF;
+}
+.in-progress:active{
+    opacity: 0.7;
 }
 .completed{
     
@@ -38,6 +54,13 @@ html,body {
     width: 220px;
     color: #00408B;
     text-align: center;
+    cursor: pointer;
+}
+.completed:active{
+    opacity: 0.7;
+}
+.completed:hover{
+    color: #FFFFFF;
 }
 .input-div{
     display: flex;
@@ -48,7 +71,7 @@ html,body {
 .todo-input{
     outline: none;
     margin-top: 24px;
-    width: 620px;
+    width: 500px;
     height: 30px;
     color: #C8C8C8;
     border: 1px solid #C8C8C8;
@@ -61,13 +84,23 @@ html,body {
 }
 .todo-item-top{
     margin-top: 24px;
-    width: 620px;
+    width: 500px;
     height: 70px;
     background: #F2F2F2;
+    border-bottom: 2px solid#E1E1E1;
+    border-radius: 5px 5px 0 0;
+}
+.todo-item-top-switch{
+    margin-top: 24px;
+    width: 500px;
+    height: 70px;
+    background: #FFF2DC;
+    border-bottom: 2px solid#E1E1E1;
     border-radius: 5px 5px 0 0;
 }
 .todo-calendar,.todo-file,.todo-comment{
     color: #757575;
+    cursor: pointer;
     margin-right: 10px;
     margin-top: 10px;
 }
@@ -75,6 +108,7 @@ html,body {
     margin-left: 50px;
 }
 .todo-edit{
+    padding-top: 10px;
     
     margin-top: 10px;
     margin-left: 20px;
@@ -89,13 +123,29 @@ html,body {
 }
 .todo-text{
     display: inline-block;
+    font-size:18px;
+}
+.todo-text-switch{
+    display: none;
 }
 .todo-edit-star{
     display: inline-block;
+    cursor: pointer;
+    
+    margin-right: 10px
+}
+.todo-switch-star{
+    display: inline-block;
+    cursor: pointer;
+    color: #F5A623;
     margin-right: 10px
 }
 .todo-edit-text{
     display: inline-block;
+    cursor: pointer;
+}
+.todo-switch-text{
+    color: #4A90E2;
 }
 .todo-star-container{
     display: inline-block;
@@ -105,18 +155,41 @@ html,body {
 .todo-item-bottom{
     background-color: #F2F2F2;
 }
+.todo-switch-bottom{
+    display: none;
+}
 .selector{
     width: 100%;
+    display: flex;
 }
 .cancel{
     width: 50%;
+    background-color: #FFFFFF;
     display: inline-block;
+    cursor: pointer;
     text-align: center;
+    font-family: Roboto-Regular;
+    font-size: 24px;
+    color: #D0021B;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.cancel:hover{
+
 }
 .save{
     width: 50%;
+    background-color: #4A90E2;
     display: inline-block;
+    cursor: pointer;
     text-align: center;
+    font-family: Roboto-Regular;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .todo-editer{
     margin-left: 60px;
@@ -134,7 +207,35 @@ html,body {
 }
 .date{
     border: none;
+    
 }
 .time{
     border: none;
+}
+.comment-input{
+    height: 100px;
+    width: 400px;
+}
+.input-area{
+    display: flex;
+    padding: 10px;
+}
+.Deadline{
+    padding: 10px;
+}
+.File{
+    padding: 10px;
+}
+.Comment{
+    padding: 10px;
+}
+.todo-text-input{
+    outline: none;
+    border: 1px solid #C8C8C8;
+    border-radius: 5px;
+    font-size:18px;
+}
+.todo-text-input-switch{
+    
+    display: none;
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="main.js"> </script>
 </head>
 
 <body>
@@ -30,16 +31,17 @@
         </div>
         <div class="todo-container">
             <div class="todo-item-container">
-                <div class="todo-item-top">
+                <div class="todo-item-top" id="todo-item-top">
                     <div class="todo-edit">
                         <input class="todo-check" type="checkbox">
-                        <div class="todo-text">Type Something Here…</div>
+                        <div class="todo-text" id="todo-text" onclick="editText('click')" ">Type Something Here…</div>
+                        <input class="todo-text-input-switch" id="todo-text-input" type="text" onblur="editText('blur')">
                         <div class="todo-star-container">
-                            <i class="fa-solid fa-star todo-edit-star"></i>
-                            <i class="fa-solid fa-pen todo-edit-text"></i>
+                            <i class="fa-solid fa-star todo-edit-star" onclick="favorite()" id="star"></i>
+                            <i class="fa-solid fa-pen todo-edit-text" onclick="edit()" id="edit"></i>
                         </div>
-                        
-    
+
+
                     </div>
                     <!-- <i class="fa-thin fa-star todo-star"></i>
                     <i class="fa-thin fa-pen"></i> -->
@@ -48,42 +50,51 @@
                         <i class="fa-solid fa-comment-dots todo-comment"></i>
                         <i class="fa-solid fa-file todo-file"></i>
                     </div>
-                    
-                    
+
+
                 </div>
-                <div class="todo-item-bottom">
+                <div class="todo-item-bottom" id="item-bottom">
                     <div class="todo-editer">
                         <div class="Deadline">
                             <i class="fa-solid fa-calendar-days"></i>
                             <div style="display: inline-block;">Deadline</div>
                             <br>
-                            <input class="date" type="date">
-                            <input class="time" type="time">
-                        </div>
-                        <div class="Comment">
-                            <i class="fa-solid fa-comment-dots"></i>
-                            
+                            <input class="date" type="date" id="date">
+                            <input class="time" type="time" id="time">
                         </div>
                         <div class="File">
                             <i class="fa-solid fa-file"></i>
+                            File
                             <br>
-                            <textarea class="comment-input"type="text">
+                            <input type="file" id="file">
+                            <!-- <textarea class="comment-input"type="text"> -->
                         </div>
+                        <div class="Comment">
+                            <i class="fa-solid fa-comment-dots"></i>
+                            Comment
+                            <br>
+                            <div class="input-area">
+                                <textarea rows="10" style="width: 90%; border: none; outline: none;" id="comment">
+                                </textarea>
+                            </div>
+                            
+                        </div>
+
                     </div>
-                    
+
                     <div class="selector">
                         <div class="cancel">
                             <i class="fa-solid fa-xmark"></i>
-                            
+                            Cancel
                         </div>
                         <div class="save">
                             <i class="fa-solid fa-plus"></i>
-                            
+                            Save
                         </div>
                     </div>
                 </div>
-                
-                
+
+
             </div>
         </div>
     </div>
