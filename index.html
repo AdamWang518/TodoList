@@ -29,16 +29,16 @@
         <div class="input-div">
             <input class="todo-input" type="text" placeholder="+ ADD TASK">
         </div>
-        <div class="todo-container">
+        <div class="todo-container" id="todo-container">
             <div class="todo-item-container">
-                <div class="todo-item-top" id="todo-item-top">
+                <div class="todo-item-top" id="todo-item-top_0">
                     <div class="todo-edit">
                         <input class="todo-check" type="checkbox">
-                        <div class="todo-text" id="todo-text" onclick="editText('click')" ">Type Something Here…</div>
-                        <input class="todo-text-input-switch" id="todo-text-input" type="text" onblur="editText('blur')">
+                        <div class="todo-text" id="todo-text_0" onclick="editText('click','todo-text_0','todo-text-input_0')" >Type Something Here…</div>
+                        <input class="todo-text-input-switch" id="todo-text-input_0" type="text" onblur="editText('blur','todo-text_0','todo-text-input_0')">
                         <div class="todo-star-container">
-                            <i class="fa-solid fa-star todo-edit-star" onclick="favorite()" id="star"></i>
-                            <i class="fa-solid fa-pen todo-edit-text" onclick="edit()" id="edit"></i>
+                            <i class="fa-solid fa-star todo-edit-star" onclick="favorite('star_0','todo-item-top_0')" id="star_0"></i>
+                            <i class="fa-solid fa-pen todo-edit-text" onclick="edit('edit_0','item-bottom_0')" id="edit_0"></i>
                         </div>
 
 
@@ -53,20 +53,20 @@
 
 
                 </div>
-                <div class="todo-item-bottom" id="item-bottom">
+                <div class="todo-item-bottom" id="item-bottom_0">
                     <div class="todo-editer">
                         <div class="Deadline">
                             <i class="fa-solid fa-calendar-days"></i>
                             <div style="display: inline-block;">Deadline</div>
                             <br>
-                            <input class="date" type="date" id="date">
-                            <input class="time" type="time" id="time">
+                            <input class="date" type="date" id="date_0">
+                            <input class="time" type="time" id="time_0">
                         </div>
                         <div class="File">
                             <i class="fa-solid fa-file"></i>
                             File
                             <br>
-                            <input type="file" id="file">
+                            <input type="file" id="file_0">
                             <!-- <textarea class="comment-input"type="text"> -->
                         </div>
                         <div class="Comment">
@@ -74,7 +74,7 @@
                             Comment
                             <br>
                             <div class="input-area">
-                                <textarea rows="10" style="width: 90%; border: none; outline: none;" id="comment">
+                                <textarea rows="10" style="width: 90%; border: none; outline: none; resize:none;" id="comment_0">
                                 </textarea>
                             </div>
                             
@@ -83,11 +83,11 @@
                     </div>
 
                     <div class="selector">
-                        <div class="cancel">
+                        <div class="cancel" id="cancel_0">
                             <i class="fa-solid fa-xmark"></i>
                             Cancel
                         </div>
-                        <div class="save">
+                        <div class="save" id="save_0"onclick="save('save_0')">
                             <i class="fa-solid fa-plus"></i>
                             Save
                         </div>
