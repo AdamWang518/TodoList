@@ -26,7 +26,7 @@ function check(){
     let time=document.getElementById('date_0');
     console.log(time.value);
 }
-function edit(editID, itemBottomID) {
+function fold(editID, itemBottomID) {
     let edit = document.getElementById(editID);
     let item = document.getElementById(itemBottomID);
 
@@ -90,17 +90,17 @@ let todoList = [];
 
 // }
 function save(index){
-    let GUID=guid();
-    console.log(GUID);
     store(index)
+    destroy()
+    
 }
 function store(index){
     let data= new FormData();
-    let todo_text=document.getElementById(`todo-text_${index}`);
+    let todo_text=document.getElementById(`todo-input`);
     let date=document.getElementById(`date_${index}`);
     let time=document.getElementById(`time_${index}`);
     let comment=document.getElementById(`comment_${index}`);
-    data.append('text',todo_text.innerText);
+    data.append('text',todo_text.value);
     data.append('date',date.value);
     data.append('time',time.value);
     console.log(comment.value);
@@ -108,7 +108,15 @@ function store(index){
     let xhr = new XMLHttpRequest();
     xhr.open('post', 'http://localhost:63320/setTodoList', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({'text':todo_text.innerText,'date':date.value,'time':time.value,'comment':comment.value}));
+    xhr.send(JSON.stringify({'text':todo_text.value,'date':date.value,'time':time.value,'comment':comment.value}));
+    xhr.onload= function(){
+        console.log(xhr.responseText);
+        if(xhr.status == 200){
+            create()
+        } else{
+            console.log('資料錯誤');
+        }
+      }
 }
 function test(){
     let xhr = new XMLHttpRequest();
@@ -180,77 +188,90 @@ function restore(value){
     time.value=value.time;
     comment.innerText=value.comment;
 }
+function expand(){
+    let bottom=document.getElementById('item-bottom_0');
+    if(bottom.classList.contains('todo-switch-bottom')){
+        bottom.classList.add('todo-item-bottom')
+        bottom.classList.remove('todo-switch-bottom')
+    }
+    else{
+        bottom.classList.remove('todo-item-bottom')
+        bottom.classList.add('todo-switch-bottom')
+    }
+    
+}
 
 function insert(value){
     index=value.id;
     let item = document.getElementById('todo-container');
-    item.insertAdjacentHTML('beforeend', `<div class="todo-item-container" id="todo-item-container_${index}">
-    <div class="todo-item-top" id="todo-item-top_${index}">
-        <div class="todo-edit">
-            <input class="todo-check" type="checkbox">
-            <div class="todo-text" id="todo-text_${index}" onclick="editText('click','todo-text_${index}','todo-text-input_${index}')" >Type Something Here…</div>
-            <input class="todo-text-input-switch" id="todo-text-input_${index}" type="text" onblur="editText('blur','todo-text_${index}','todo-text-input_${index}')">
-            <div class="todo-star-container">
-                <i class="fa-solid fa-star todo-edit-star" onclick="favorite('star_${index}','todo-item-top_${index}')" id="star_${index}"></i>
-                <i class="fa-solid fa-pen todo-edit-text" onclick="edit('edit_${index}','item-bottom_${index}')" id="edit_${index}"></i>
-            </div>
-
-
-        </div>
-        <!-- <i class="fa-thin fa-star todo-star"></i>
-        <i class="fa-thin fa-pen"></i> -->
-        <div class="todo-tag">
-            <i class="fa-solid fa-calendar-days todo-calendar"></i>
-            <i class="fa-solid fa-comment-dots todo-comment"></i>
-            <i class="fa-solid fa-file todo-file"></i>
-        </div>
-
-
-    </div>
-    <div class="todo-item-bottom" id="item-bottom_${index}">
-        <div class="todo-editer">
-            <div class="Deadline">
-                <i class="fa-solid fa-calendar-days"></i>
-                <div style="display: inline-block;">Deadline</div>
-                <br>
-                <input class="date" type="date" id="date_${index}">
-                <input class="time" type="time" id="time_${index}">
-            </div>
-            <div class="File">
-                <i class="fa-solid fa-file"></i>
-                File
-                <br>
-                <input type="file" id="file">
-                <!-- <textarea class="comment-input"type="text"> -->
-            </div>
-            <div class="Comment">
-                <i class="fa-solid fa-comment-dots"></i>
-                Comment
-                <br>
-                <div class="input-area">
-                    <textarea rows="10" style="width: 90%; border: none; outline: none; resize:none;" id="comment_${index}">
-                    </textarea>
+    item.insertAdjacentHTML('beforeend',
+     `
+    <div class="todo-item-container" id="todo-item-container_${index}">
+        <div class="todo-item-top" id="todo-item-top_${index}">
+            <div class="todo-edit">
+                <input class="todo-check" type="checkbox">
+                <div class="todo-text" id="todo-text_${index}" onclick="editText('click','todo-text_${index}','todo-text-input_${index}')" >Type Something Here…</div>
+                <input class="todo-text-input-switch" id="todo-text-input_${index}" type="text" onblur="editText('blur','todo-text_${index}','todo-text-input_${index}')">
+                <div class="todo-star-container">
+                    <i class="fa-solid fa-star todo-edit-star" onclick="favorite('star_${index}','todo-item-top_${index}')" id="star_${index}"></i>
+                    <i class="fa-solid fa-pen todo-switch-text" onclick="fold('edit_${index}','item-bottom_${index}')" id="edit_${index}"></i>
                 </div>
-                
+
+
             </div>
+            <!-- <i class="fa-thin fa-star todo-star"></i>
+            <i class="fa-thin fa-pen"></i> -->
+            <div class="todo-tag">
+                <i class="fa-solid fa-calendar-days todo-calendar"></i>
+                <i class="fa-solid fa-comment-dots todo-comment"></i>
+                <i class="fa-solid fa-file todo-file"></i>
+            </div>
+
 
         </div>
+        <div class="todo-switch-bottom" id="item-bottom_${index}">
+            <div class="todo-editer">
+                <div class="Deadline">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div style="display: inline-block;">Deadline</div>
+                    <br>
+                    <input class="date" type="date" id="date_${index}">
+                    <input class="time" type="time" id="time_${index}">
+                </div>
+                <div class="File">
+                    <i class="fa-solid fa-file"></i>
+                    File
+                    <br>
+                    <input type="file" id="file">
+                    <!-- <textarea class="comment-input"type="text"> -->
+                </div>
+                <div class="Comment">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    Comment
+                    <br>
+                    <div class="input-area">
+                        <textarea rows="10" style="width: 90%; border: none; outline: none; resize:none;" id="comment_${index}">
+                        </textarea>
+                    </div>
+                    
+                </div>
 
-        <div class="selector">
-            <div class="cancel" id="cancel_${index}" onclick="cancel('${index}')">
-                <i class="fa-solid fa-xmark"></i>
-                Cancel
             </div>
-            <div class="save" id="save_${index}"onclick="edit('${index}')">
-                <i class="fa-solid fa-plus"></i>
-                Edit
+
+            <div class="selector">
+                <div class="cancel" id="cancel_${index}" onclick="cancel('${index}')">
+                    <i class="fa-solid fa-xmark"></i>
+                    Cancel
+                </div>
+                <div class="save" id="save_${index}"onclick="edit('${index}')">
+                    <i class="fa-solid fa-plus"></i>
+                    Edit
+                </div>
             </div>
         </div>
-    </div>
 
 
-</div>
-</div>`)
+    </div>`)
 restore(value)
 }
 let array;
@@ -272,5 +293,9 @@ function create(){
         }
 
     }
+}
+function destroy(){
+    document.getElementById('todo-container').innerHTML = '';
+
 }
 create()
